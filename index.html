@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="When someone leaves, we copy their work accounts data and turn it into an agent you can talk to. Read-only, stored in your own cloud, every answer cites its source.">
+<link rel="canonical" href="https://backupemployee.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#F2EDE1">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://backupemployee.com/">
+<meta property="og:title" content="Backup Employee">
+<meta property="og:description" content="Your employee left. What they knew didn’t. An agent built from their work accounts, in your own cloud.">
+<meta property="og:image" content="https://backupemployee.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Backup Employee">
+<meta name="twitter:description" content="Your employee left. What they knew didn’t. An agent built from their work accounts, in your own cloud.">
+<meta name="twitter:image" content="https://backupemployee.com/og.png">
+<style>*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Backup Employee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Backup Employee · Archive. Single light theme by design. */
+:root{
+  --ground:#F2EDE1; --surface:#FBF8F1; --card:#FFFFFF; --ink:#221F19; --muted:#6B6454;
+  --line:#D9CEB6; --rule:#ECE5D6; --manila:#E7D8AB; --green:#2F6147; --green-tint:#E2EBE3;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --sans:"IBM Plex Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+body{background:var(--ground);color:var(--ink);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+.outer{padding:clamp(0px,2.2vw,28px)}
+.page{max-width:1240px;margin-inline:auto;background:var(--surface);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.wrap{padding-inline:clamp(16px,4.5vw,56px)}
+.band{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--line)}
+@media (max-width:620px){.page{border-inline:0;border-radius:0}}
+
+.label{margin:0;font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--green)}
+h1,h2{font-family:var(--mono);font-weight:600;text-wrap:balance}
+h2{font-size:clamp(1.5rem,2.8vw,2.05rem);line-height:1.15;letter-spacing:-0.03em;margin:0}
+.lead{margin:0;color:var(--muted);font-size:clamp(16px,1.8vw,18px);line-height:1.6;max-width:36rem}
+
+/* nav */
+.nav-bar{border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:28px;padding-block:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font:600 16px/1 var(--mono);letter-spacing:-0.03em}
+.mark{width:30px;height:30px;flex:none}
+.links{display:flex;gap:26px;margin-left:auto}
+.links a{color:var(--muted);text-decoration:none;font-size:15px}
+.links a:hover{color:var(--ink)}
+.btn{font:500 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--surface);border:0;border-radius:3px;padding:15px 22px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--green)}
+.nav .btn{padding:11px 18px;font-size:12px}
+@media (max-width:760px){.links{display:none}.nav .btn{margin-left:auto}}
+
+/* hero */
+.hero{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;padding-block:clamp(56px,9vw,104px) clamp(48px,7vw,80px)}
+.status{display:inline-flex;align-items:center;gap:10px;margin:0;background:var(--manila);border-radius:3px;padding:7px 14px 7px 12px;font:500 11.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.dot{width:8px;height:8px;border-radius:1px;background:var(--green);flex:none}
+h1{font-size:clamp(1.95rem,4.8vw,3.15rem);line-height:1.12;letter-spacing:-0.045em;margin:4px 0 0}
+.copy{background:linear-gradient(transparent 58%,var(--manila) 58% 94%,transparent 94%);padding-inline:.1em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero .lead{text-wrap:balance}
+.signup{display:flex;flex-wrap:wrap;gap:10px;width:100%;max-width:470px;margin-top:8px}
+.signup input{flex:1 1 220px;min-width:0;font:400 16px/1.2 var(--sans);padding:14px 16px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--ink)}
+.signup input::placeholder{color:var(--muted);opacity:.75}
+@media (max-width:480px){.signup .btn{flex:1 1 100%}}
+.assure{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;padding:0;margin:2px 0 0;font:500 11.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.assure li{display:flex;align-items:center;gap:8px}
+.assure li::before{content:"";width:5px;height:5px;background:var(--green)}
+
+/* a card with a folder tab */
+.filed{position:relative;margin:28px 0 0;background:var(--card);border:1px solid var(--line);border-radius:0 4px 4px 4px}
+.tabs{position:absolute;top:-28px;left:-1px;display:flex;gap:4px;max-width:calc(100% + 2px)}
+.tabs .tab{position:static}
+.tab.off{background:var(--ground);color:var(--muted)}
+.tab{position:absolute;top:-28px;left:-1px;background:var(--manila);border:1px solid var(--line);border-bottom:0;border-radius:4px 4px 0 0;padding:7px 12px 6px;font:500 11px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+
+/* how it works */
+.how{display:grid;grid-template-columns:minmax(0,390px) minmax(0,1fr);gap:clamp(40px,7vw,96px);align-items:center}
+@media (max-width:860px){.how{grid-template-columns:minmax(0,1fr)}.demo{order:2}}
+.demo{display:flex;flex-direction:column;align-items:center;gap:14px}
+.thread{width:100%;max-width:370px;padding:18px 16px 16px}
+.head{display:flex;flex-direction:column;align-items:center;gap:8px;padding-bottom:14px;border-bottom:1px solid var(--line);text-align:center}
+.avatar svg{width:22px;height:22px}
+.avatar{width:44px;height:44px;border-radius:3px;display:grid;place-items:center;background:var(--green-tint);color:var(--green);font:600 15px/1 var(--mono)}
+.head strong{display:block;font:600 15px/1.25 var(--sans)}
+.head small{display:block;font-size:12.5px;color:var(--muted)}
+.stamp{margin:12px 0 10px;text-align:center;font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.msgs{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;margin:0;padding:10px 13px;border-radius:3px;font-size:13.5px;line-height:1.45}
+.msg p{margin:0}
+.out{align-self:flex-end;background:var(--manila)}
+.in{align-self:flex-start;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.src{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:4px 9px;border:1px solid var(--green);border-radius:3px;font:500 10.5px/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--green)}
+.src svg{width:13px;height:13px;flex:none}
+.composer{display:flex;align-items:center;gap:8px;margin-top:14px}
+.composer .field{flex:1;min-width:0;border:1px solid var(--line);border-radius:3px;padding:10px 14px;font-size:13.5px;color:var(--muted)}
+.send{width:36px;height:36px;border-radius:3px;background:var(--ink);color:var(--surface);display:grid;place-items:center;flex:none}
+.send svg{width:17px;height:17px}
+.caption{margin:0;text-align:center;font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pitch h2{margin-bottom:34px}
+.rows{list-style:none;padding:0;margin:0;display:grid;gap:28px}
+.rows li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;align-items:start}
+.tile{width:40px;height:40px;display:grid;place-items:center;border-radius:3px;background:var(--manila)}
+.tile svg{width:20px;height:20px}
+.rows h3{font:600 15px/1.3 var(--mono);margin:9px 0 6px}
+.rows p{margin:0;color:var(--muted);max-width:46ch}
+
+/* sources: index cards */
+.section-head{display:grid;justify-items:center;gap:14px;text-align:center;margin-bottom:44px}
+.section-head .lead{text-wrap:balance}
+.cards{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cards{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px 20px 16px;display:grid;gap:8px;align-content:start}
+.card h3{margin:0;padding-bottom:10px;border-bottom:1.5px solid var(--green);font:600 17px/1.25 var(--mono);letter-spacing:-0.02em}
+.card p:last-child{margin:0;min-height:78px;font-size:14.5px;line-height:26px;color:var(--muted);background:repeating-linear-gradient(to bottom,transparent 0 25px,var(--rule) 25px 26px)}
+
+/* private model */
+.models{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,4vw,44px);align-items:start}
+@media (max-width:860px){.models{grid-template-columns:minmax(0,1fr)}}
+.pitch-line{margin:0;padding:16px 20px 14px;border-bottom:1px solid var(--line);font:500 13px/1.45 var(--mono);color:var(--green)}
+.spec dl{margin:0}
+.spec .row{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:16px;padding:13px 20px;border-bottom:1px solid var(--line)}
+.spec .row:last-child{border-bottom:0}
+.spec dt{padding-top:2px;font:500 11px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.spec dd{margin:0;font:500 14px/1.45 var(--mono)}
+.ok{display:inline-block;border:1px solid var(--green);border-radius:3px;padding:1px 8px;color:var(--green);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+@media (max-width:420px){.spec .row{grid-template-columns:minmax(0,1fr);gap:4px}}
+
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 28px;padding-block:26px 30px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.foot a{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="outer">
+<div class="page" id="top">
+  <div class="nav-bar">
+    <header class="nav wrap">
+      <a class="brand" href="#top">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h8l2.5 3h12.5a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5h-23A1.5 1.5 0 0 1 3 25.5z" fill="#E7D8AB" stroke="#221F19" stroke-width="1.4"/><path d="M3 13.5h26" stroke="#221F19" stroke-width="1.4"/><rect x="7" y="17.5" width="9" height="3" fill="#2F6147"/></svg>
+        <span>Backup Employee</span>
+      </a>
+      <nav class="links" aria-label="Main"><a href="#how">How it works</a><a href="#sources">What we file</a><a href="#model">Choose your model</a></nav>
+      <a class="btn" href="mailto:backup@backupemployee.com">Get in touch</a>
+    </header>
+  </div>
+
+  <section class="hero wrap">
+    <p class="status"><span class="dot"></span>Now onboarding · US &amp; Canada</p>
+    <h1>Your employee left.<br><span class="copy">What they knew didn’t.</span></h1>
+    <p class="lead">When someone leaves, we copy their work accounts data and turn it into an agent that you can talk to. Ask it anything and get answers that cite the email, message, call or file.</p>
+    <form class="signup" id="signup">
+      <label class="sr" for="email">Work email</label>
+      <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
+      <button class="btn" type="submit">Request access</button>
+    </form>
+    <ul class="assure"><li>Google Workspace &amp; Microsoft 365</li><li>Read-only access</li><li>Stored in your cloud</li></ul>
+  </section>
+
+  <section class="how band wrap" id="how">
+    <div class="demo">
+      <figure class="filed thread" aria-label="Example conversation">
+        <div class="tabs"><span class="tab">Dana Reyes</span><span class="tab off">Tom Okafor</span><span class="tab off">Rae Novak</span></div>
+        <div class="head"><span class="avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h5l2 2.5h8A1.5 1.5 0 0 1 21 9v9.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></svg></span><div><strong>Dana Reyes Archive</strong><small>Account manager · records to 29 Aug</small></div></div>
+        <p class="stamp">Today 9:41 AM</p>
+        <div class="msgs">
+          <p class="msg out">Did Dana send Fernbrook the new price list before she left?</p>
+          <div class="msg in">
+            <p>Yes. She emailed the fall price list to Priya S. at Fernbrook Grocers on 22 Aug. Priya S. replied the next day asking for case-pack sizes. That reply was never answered.</p>
+            <span class="src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>Email · 22 Aug · Fall pricing, Fernbrook</span>
+          </div>
+          <p class="msg out">Who was her contact at the co-packer?</p>
+          <div class="msg in">
+            <p>Marco R., operations lead at Saltmarsh Co-Pack. They last spoke on 12 Aug, on a call about the October run.</p>
+            <span class="src"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 4h3.2l1.6 4.2-2.1 1.3a10.5 10.5 0 0 0 5.3 5.3l1.3-2.1 4.2 1.6v3.2a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 3.5 6.2a2 2 0 0 1 2-2.2z"/></svg>Call transcript · 12 Aug · October run</span>
+          </div>
+        </div>
+        <div class="composer" aria-hidden="true"><span class="field">Ask the archive…</span><span class="send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+      </figure>
+      <p class="caption">Example · names and details are illustrative</p>
+    </div>
+
+    <div class="pitch">
+      <h2>Agents for business continuity.<br>Secured in your cloud.<br>Every answer cites its source.</h2>
+      <ul class="rows">
+        <li>
+          <span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <div><h3>Accessible archives</h3><p>Their email, calendar, files, chats and call transcripts are stored with read-only access. Cryptographically verified.</p></div>
+        </li>
+        <li>
+          <span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 18.5h9.25a4.25 4.25 0 0 0 .6-8.46A5.75 5.75 0 0 0 6.3 9.6a4.5 4.5 0 0 0 1.2 8.9z"/></svg></span>
+          <div><h3>Secured in your cloud</h3><p>The archive lives in your company’s own Google Cloud or Microsoft Azure account, not on our servers. You own it, and you decide how long it stays and who has access to the agent.</p></div>
+        </li>
+        <li>
+          <span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5H7.5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V8z"/><path d="M14 3.5V8h4.5M9 12.5h6M9 16h4"/></svg></span>
+          <div><h3>Conversational interaction</h3><p>Ask the agent in plain English. Each answer names the email, message, call or file it came from, so anyone can check it.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band wrap" id="sources">
+    <div class="section-head">
+      <p class="label">What we file</p>
+      <h2>Every place their work happened, in one archive.</h2>
+      <p class="lead">Start with their Google Workspace or Microsoft 365 account, then add the chats, calls and customer records around it.</p>
+    </div>
+    <ul class="cards">
+      <li class="card"><p class="label">Email · Calendar · Files</p><h3>Google Workspace</h3><p>Gmail, Calendar, Drive and Contacts, including files other people shared with them.</p></li>
+      <li class="card"><p class="label">Email · Calendar · Files</p><h3>Microsoft 365</h3><p>Outlook mail and calendar, OneDrive, SharePoint and Teams chats.</p></li>
+      <li class="card"><p class="label">Chat</p><h3>Slack</h3><p>Channels, direct messages and the files posted in them.</p></li>
+      <li class="card"><p class="label">Chat</p><h3>WhatsApp</h3><p>Chat history from company phones, including groups with customers and suppliers.</p></li>
+      <li class="card"><p class="label">Calls</p><h3>Call transcripts</h3><p>Zoom, Google Meet, Teams and Fathom recordings, as searchable transcripts.</p></li>
+      <li class="card"><p class="label">Sales</p><h3>CRM notes</h3><p>HubSpot and Salesforce notes, deals and activity history.</p></li>
+    </ul>
+  </section>
+
+  <section class="band wrap" id="model">
+    <div class="section-head">
+      <p class="label">Choose your model</p>
+      <h2>Private by default. Or the AI you already pay for.</h2>
+      <p class="lead">Answers come from the Backup Employee LLM, a lightweight model tuned for conversational search that runs only inside your own cloud. If your team would rather use the AI it already has, connect that instead.</p>
+    </div>
+    <div class="models">
+      <div class="filed spec">
+        <div class="tab">Record · Backup Employee LLM</div>
+        <p class="pitch-line">The fortress. Nothing leaves your cloud.</p>
+        <dl>
+          <div class="row"><dt>Optimized for</dt><dd>Conversational search across email, chat, call and file records</dd></div>
+          <div class="row"><dt>Runs in</dt><dd>Your Google Cloud, Microsoft Azure or other cloud provider</dd></div>
+          <div class="row"><dt>Runs when</dt><dd>Someone queries the Backup Employee agent</dd></div>
+          <div class="row"><dt>Trained on</dt><dd>Synthetic employee records (none of your data)</dd></div>
+          <div class="row"><dt>Sent to AI providers</dt><dd><span class="ok">Nothing</span></dd></div>
+          <div class="row"><dt>Billed</dt><dd>At cost, to your cloud account</dd></div>
+        </dl>
+      </div>
+      <div class="filed spec">
+        <div class="tab">Record · Bring your own model</div>
+        <p class="pitch-line">The quick start. Use the AI you already pay for.</p>
+        <dl>
+          <div class="row"><dt>Model</dt><dd>Claude, ChatGPT or another provider you already use</dd></div>
+          <div class="row"><dt>Runs in</dt><dd>Your existing AI account</dd></div>
+          <div class="row"><dt>Runs when</dt><dd>Someone queries the Backup Employee agent</dd></div>
+          <div class="row"><dt>Set up with</dt><dd>Your own API key</dd></div>
+          <div class="row"><dt>Sent to AI providers</dt><dd>Only the records your question retrieves</dd></div>
+          <div class="row"><dt>Billed</dt><dd>To your existing AI plan</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot wrap" id="contact">
+    <span>Backup Employee · US &amp; Canada</span>
+    <a href="mailto:backup@backupemployee.com">backup@backupemployee.com</a>
+  </footer>
+</div>
+</div>
+
+<script>
+document.getElementById('signup').addEventListener('submit',function(e){
+  e.preventDefault();
+  var v=document.getElementById('email').value;
+  location.href='mailto:backup@backupemployee.com?subject='+encodeURIComponent('Early access')+'&body='+encodeURIComponent('Please add '+v+' to the early access list.');
+});
+</script>
+</body>
+</html>

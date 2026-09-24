@@ -70,6 +70,7 @@ h1{font-size:clamp(1.95rem,4.8vw,3.15rem);line-height:1.12;letter-spacing:-0.045
 .signup input{flex:1 1 220px;min-width:0;font:400 16px/1.2 var(--sans);padding:14px 16px;border:1px solid var(--line);border-radius:3px;background:var(--card);color:var(--ink)}
 .signup input::placeholder{color:var(--muted);opacity:.75}
 @media (max-width:480px){.signup .btn{flex:1 1 100%}}
+.thanks{margin:6px 0 0;padding:13px 18px;border:1px solid var(--green);border-radius:3px;background:var(--green-tint);color:var(--green);font:500 14.5px/1.5 var(--mono);max-width:470px}
 .assure{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;padding:0;margin:2px 0 0;font:500 11.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .assure li{display:flex;align-items:center;gap:8px}
 .assure li::before{content:"";width:5px;height:5px;background:var(--green)}
@@ -161,6 +162,7 @@ h1{font-size:clamp(1.95rem,4.8vw,3.15rem);line-height:1.12;letter-spacing:-0.045
       <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required>
       <button class="btn" type="submit">Request access</button>
     </form>
+    <p class="thanks" id="thanks" hidden>You’re on the list. We’ll be in touch from backup@backupemployee.com.</p>
     <ul class="assure"><li>Google Workspace &amp; Microsoft 365</li><li>Read-only access</li><li>Stored in your cloud</li></ul>
   </section>
 
@@ -264,11 +266,24 @@ h1{font-size:clamp(1.95rem,4.8vw,3.15rem);line-height:1.12;letter-spacing:-0.045
 </div>
 
 <script>
-document.getElementById('signup').addEventListener('submit',function(e){
-  e.preventDefault();
-  var v=document.getElementById('email').value;
-  location.href='mailto:backup@backupemployee.com?subject='+encodeURIComponent('Early access')+'&body='+encodeURIComponent('Please add '+v+' to the early access list.');
-});
+(function () {
+  var FORM = "https://docs.google.com/forms/d/e/1FAIpQLScX1CVmQEaESQKCq0GaqZi1p03fqsFuAqD3eDW7NcRWq5Qczw/formResponse";
+  var FIELD = "entry.1901342261";
+  var form = document.getElementById("signup");
+  var email = document.getElementById("email");
+  var thanks = document.getElementById("thanks");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var value = email.value.trim();
+    if (!value) return;
+    var body = new FormData();
+    body.append(FIELD, value);
+    fetch(FORM, { method: "POST", mode: "no-cors", body: body }).catch(function () {});
+    form.hidden = true;
+    thanks.hidden = false;
+    thanks.focus();
+  });
+})();
 </script>
 </body>
 </html>
